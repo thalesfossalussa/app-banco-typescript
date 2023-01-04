@@ -1,16 +1,16 @@
 import { Pessoa } from "./pessoa.js";
 
 export class Cliente extends Pessoa {
-    public readonly cpf:string;
-    public readonly nome:string;
-    private _telefone:string;
+    protected readonly _cpf:string;
+    protected readonly _nome:string;
+    protected _telefone:string;
     private _vip:boolean;
     
 
     constructor(novoCPF:string, novoNome:string, novoTelefone:string) {
         super();
-        this.cpf = novoCPF;
-        this.nome = novoNome;
+        this._cpf = novoCPF;
+        this._nome = novoNome;
         this.telefone = novoTelefone;
     }
 
