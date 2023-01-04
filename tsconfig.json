@@ -1,7 +1,12 @@
 {
     "compilerOptions": {
-        "outDir": "dist/js",
-        "noEmitOnError": true
+        "outDir": "app/dist/js",
+        "noEmitOnError": true,
+        "noImplicitAny": true,
+        "removeComments": true,
+        "strictNullChecks": true,
+        "experimentalDecorators": true,
+        "sourceMap": true
     },
     "include": ["app/**/*"]
 }
