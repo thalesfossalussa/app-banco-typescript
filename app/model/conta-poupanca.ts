@@ -1,21 +1,21 @@
 import { Conta } from "./conta.js";
 
 export class ContaPoupanca extends Conta {
-    readonly numero:string;
-    private rentabilidadeMensal:number;
+    readonly numero: string;
+    private rentabilidadeMensal: number;
 
-    public depositar(valor:number):void {
+    public depositar(valor: number): void {
         throw new Error("Method not implemented.");
     }
-    public sacar(valor:number):void {
+    public sacar(valor: number): void {
         throw new Error("Method not implemented.");
     }
 
-    public calcularRendimento():number{
+    public calcularRendimento(): number{
         return 1;
     }
 
-    public calcularSaldo():number {
+    public calcularSaldo(): number {
         return 1;
     }
 
