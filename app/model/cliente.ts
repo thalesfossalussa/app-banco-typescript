@@ -26,6 +26,7 @@ export class Cliente extends Pessoa implements IUsuario {
     public listarEnderecos() {
         for (let i = 0; i < this.enderecos.length; i++) {
             console.log(`
+                Endereço ${i + 1}
                 Logradouro: ${this.enderecos[i].logradouro}
                 Número: ${this.enderecos[i].numero}
                 Complemento: ${this.enderecos[i].complemento}
