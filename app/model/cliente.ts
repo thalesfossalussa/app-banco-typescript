@@ -8,8 +8,8 @@ export class Cliente extends Pessoa implements IUsuario {
     protected readonly _nome: string;
     protected _telefone: string;
     private _vip: boolean;
-    public enderecos: Endereco[];
-    public contas: Conta[];
+    private enderecos: Endereco[];
+    private contas: Conta[];
     
 
     constructor(novoCPF: string, novoNome: string, novoTelefone: string) {
