@@ -12,16 +12,16 @@ export class Cliente extends Pessoa implements IUsuario {
     private contas: Conta[];
     
 
-    constructor(novoCPF: string, novoNome: string, novoTelefone: string) {
+    constructor(cpf: string, nome: string, telefone: string) {
         super();
-        this._cpf = novoCPF;
-        this._nome = novoNome;
-        this.telefone = novoTelefone;
+        this._cpf = cpf;
+        this._nome = nome;
+        this.telefone = telefone;
     }
     
     
-    public set telefone(novoTelefone: string) {
-        this._telefone = novoTelefone;
+    public set telefone(telefone: string) {
+        this._telefone = telefone;
     }  
     
     

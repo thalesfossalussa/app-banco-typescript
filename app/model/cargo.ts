@@ -4,10 +4,10 @@ export class Cargo {
     private readonly _nome: string;
     private _funcionarios: Funcionario[];
 
-    constructor (novoNome: string, novoFuncionario: Funcionario) {
-        this._nome = novoNome;
+    constructor (nome: string, funcionario: Funcionario) {
+        this._nome = nome;
         this._funcionarios = [];
-        this._funcionarios.push(novoFuncionario);
+        this._funcionarios.push(funcionario);
     }
 
     public get nome() {
@@ -18,13 +18,13 @@ export class Cargo {
         return this._funcionarios;
     }
 
-    public adicionarFuncionario(novoFuncionario: Funcionario): void {
-        this._funcionarios.push(novoFuncionario);
+    public adicionarFuncionario(funcionario: Funcionario): void {
+        this._funcionarios.push(funcionario);
     }
 
-    public removerFuncionario(antigoFuncionario: Funcionario): void{
+    public removerFuncionario(funcionario: Funcionario): void{
         for(let i = 0; i < this._funcionarios.length; i++) {
-            if (antigoFuncionario.cpf == this._funcionarios[i].cpf) {
+            if (funcionario.cpf == this._funcionarios[i].cpf) {
                 this._funcionarios = this._funcionarios.splice(i,1);
                 break;
             }

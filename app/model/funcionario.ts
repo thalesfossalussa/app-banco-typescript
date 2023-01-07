@@ -9,12 +9,12 @@ export class Funcionario extends Pessoa implements IUsuario{
     private _salario: number;
     private _cargos: Cargo[] = [];
 
-    constructor(cpfFuncionario: string, nomeFuncionario: string, telefoneFuncionario: string, salarioFuncionario: number) {
+    constructor(cpf: string, nome: string, telefone: string, salario: number) {
         super();
-        this._cpf = cpfFuncionario;
-        this._nome = nomeFuncionario;
-        this._telefone = telefoneFuncionario;
-        this._salario = salarioFuncionario;
+        this._cpf = cpf;
+        this._nome = nome;
+        this._telefone = telefone;
+        this._salario = salario;
     }
 
     autenticar(): boolean {
@@ -42,15 +42,15 @@ export class Funcionario extends Pessoa implements IUsuario{
         return  this._cargos;
     }
 
-    public set telefone(novo: string) {
-        this._telefone = novo;
+    public set telefone(telefone: string) {
+        this._telefone = telefone;
     }
 
-    public set salario(novo: number) {
-        this._salario = novo;
+    public set salario(salario: number) {
+        this._salario = salario;
     }
 
-    public set cargo(novo: Cargo) {
-        this._cargos.push(novo);
+    public set cargo(cargo: Cargo) {
+        this._cargos.push(cargo);
     }
 }
