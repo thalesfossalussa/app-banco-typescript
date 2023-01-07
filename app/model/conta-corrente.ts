@@ -1,17 +1,21 @@
 import { Transacao } from "../interface/itransacao.js";
+import { Cliente } from "./cliente.js";
 import { Conta } from "./conta.js";
 import { Credito } from "./credito.js";
 import { Debito } from "./debito.js";
 
 export class ContaCorrente extends Conta {
-    public readonly numero:string;
-    private _numero:string;
-    private limite:number;
-    private transacoes: Transacao[];
+    private _limite:number;
+    private _transacoes: Transacao[] = [];
+
+    constructor (numero: string, limite: number, cliente: Cliente) {
+        super(numero, cliente);
+        this._limite = limite;
+    }
 
     public depositar(valor: number): void {
         const credito = new Credito(valor);
-        this.transacoes.push(credito);
+        this._transacoes.push(credito);
     }
     public sacar(valor:number): void {
         const debito = new Debito(valor);
@@ -21,7 +25,7 @@ export class ContaCorrente extends Conta {
             return;
         }
 
-        this.transacoes.push(debito);
+        this._transacoes.push(debito);
     }
 
     public transferir(contaDestino: Conta, valor: number): void {
@@ -40,18 +44,18 @@ export class ContaCorrente extends Conta {
         let totalCreditos = 0;
         let totalDebitos = 0;
 
-        for (let i = 0; i < this.transacoes.length; i++) {
+        for (let i = 0; i < this._transacoes.length; i++) {
             // Calculando Creditos
-            if (this.transacoes[i].constructor === Credito) {
-                totalCreditos += this.transacoes[i].valor;
+            if (this._transacoes[i].constructor === Credito) {
+                totalCreditos += this._transacoes[i].valor;
             }
             
             // Calculando Debitos
-            if (this.transacoes[i].constructor === Debito) {
-                totalDebitos += this.transacoes[i].valor;
+            if (this._transacoes[i].constructor === Debito) {
+                totalDebitos += this._transacoes[i].valor;
             }
         }
 
-        return (totalCreditos - totalDebitos) + this.limite;
+        return (totalCreditos - totalDebitos) + this._limite;
     }
 }

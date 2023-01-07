@@ -3,20 +3,26 @@ import { Credito } from "./credito.js";
 import { Transacao } from "../interface/itransacao.js";
 import { Debito } from "./debito.js";
 import { Taxas } from "../enums/taxas.js";
+import { Cliente } from "./cliente.js";
 
 export class ContaPoupanca extends Conta {
-    readonly numero: string;
-    private rentabilidadeMensal: number;
-    private transacoes: Transacao[];
+    private _rentabilidadeMensal: number;
+    private _transacoes: Transacao[];
+
+    constructor (numero: string, rentabilidadeMensal: number, cliente: Cliente) {
+        super(numero, cliente);
+        this._rentabilidadeMensal = rentabilidadeMensal;
+
+    }
 
     public depositar(valor: number): void {
         const credito = new Credito(valor);
-        this.transacoes.push(credito);
+        this._transacoes.push(credito);
     }
     public sacar(valor: number): void {
         const debito = new Debito(valor);
         if(this.calcularSaldo() >= debito.valor){
-            this.transacoes.push(debito);
+            this._transacoes.push(debito);
         } else{
             console.log("Saldo inferior ao saque, favor verificar seu saldo e tentar novamente");
         }
@@ -37,15 +43,15 @@ export class ContaPoupanca extends Conta {
         let totalCreditos = 0;
         let totalDebitos = 0;
 
-        for (let i = 0; i < this.transacoes.length; i++) {
+        for (let i = 0; i < this._transacoes.length; i++) {
             // Calculando Creditos
-            if (this.transacoes[i].constructor === Credito) {
-                totalCreditos += this.transacoes[i].valor;
+            if (this._transacoes[i].constructor === Credito) {
+                totalCreditos += this._transacoes[i].valor;
             }
 
             // Calculando Debitos
-            if (this.transacoes[i].constructor === Debito) {
-                totalDebitos += this.transacoes[i].valor;
+            if (this._transacoes[i].constructor === Debito) {
+                totalDebitos += this._transacoes[i].valor;
             }
         }
         let saldoSemRendimento = totalCreditos - totalDebitos;
