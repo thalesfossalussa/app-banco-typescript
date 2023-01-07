@@ -7,7 +7,7 @@ import { Cliente } from "./cliente.js";
 
 export class ContaPoupanca extends Conta {
     private _rentabilidadeMensal: number;
-    private _transacoes: Transacao[];
+    private _transacoes: Transacao[] = [];
 
     constructor (numero: string, rentabilidadeMensal: number, cliente: Cliente) {
         super(numero, cliente);
@@ -32,9 +32,9 @@ export class ContaPoupanca extends Conta {
         let rendimento = 0;
 
         if (Taxas.SELIC <= 8.5) {
-            rendimento = (Taxas.SELIC * 0.7) + Taxas.TR;
+            rendimento = (Taxas.SELIC * 0.7) + Taxas.TR + this._rentabilidadeMensal;
         } else if (Taxas.SELIC > 8.5) {
-            rendimento = 0.005 + Taxas.TR;
+            rendimento = 0.005 + Taxas.TR + this._rentabilidadeMensal;
         }
         return rendimento;
     }
