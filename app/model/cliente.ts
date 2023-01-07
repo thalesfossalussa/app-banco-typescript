@@ -19,16 +19,6 @@ export class Cliente extends Pessoa implements IUsuario {
         this.telefone = telefone;
     }
     
-    
-    public set telefone(telefone: string) {
-        this._telefone = telefone;
-    }  
-    
-    
-    public get telefone(): string {
-        return this._telefone;
-    }
-    
     autenticar(): boolean {
         return true;
     }
@@ -45,5 +35,45 @@ export class Cliente extends Pessoa implements IUsuario {
             `)
         }
     }
- 
+    
+    public get cpf(): string {
+        return this._cpf;
+    }
+
+    public get telefone(): string {
+        return this._telefone;
+    }
+    
+    public get nome(): string {
+        return this._nome;
+    }
+    
+    public get vip(): boolean {
+        return this._vip;
+    }
+
+    public get enderecos(): Endereco[] {
+        return this._enderecos;
+    }
+
+    public get contas(): Conta[] {
+        return this._contas;
+    }
+
+    public set telefone(telefone: string) {
+        this._telefone = telefone;
+    }  
+
+    public set vip(vip: boolean) {
+        this._vip = vip;
+    }  
+
+    public set endereco(endereco: Endereco) {
+        this._enderecos.push(endereco);
+    }  
+
+    public set conta(conta: Conta) {
+        this._contas.push(conta);
+    }  
+    
 }
