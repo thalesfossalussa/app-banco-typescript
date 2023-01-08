@@ -36,7 +36,7 @@ export class ContaPoupanca extends Conta {
         } else if (Taxas.SELIC > 8.5) {
             rendimento = 0.005 + Taxas.TR + this._rentabilidadeMensal;
         }
-        return rendimento;
+        return this.calcularSaldo() * rendimento;
     }
 
     public calcularSaldo(): number {
@@ -54,8 +54,8 @@ export class ContaPoupanca extends Conta {
                 totalDebitos += this._transacoes[i].valor;
             }
         }
-        let saldoSemRendimento = totalCreditos - totalDebitos;
-        return saldoSemRendimento + (saldoSemRendimento * this.calcularRendimento());
+        let saldo = totalCreditos - totalDebitos;
+        return saldo;
     }
 
 }
