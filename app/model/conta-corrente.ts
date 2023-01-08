@@ -13,12 +13,12 @@ export class ContaCorrente extends Conta {
         this._limite = limite;
     }
 
-    public depositar(valor: number): void {
-        const credito = new Credito(valor);
+    public depositar(valor: number, data?: Date): void {
+        const credito = new Credito(valor, data);
         this._transacoes.push(credito);
     }
-    public sacar(valor:number): void {
-        const debito = new Debito(valor);
+    public sacar(valor:number, data?: Date): void {
+        const debito = new Debito(valor, data);
 
         if(this.calcularSaldo() < debito.valor){
             console.log("Limite insuficiente, favor verificar seu saldo e limite e tentar novamente");

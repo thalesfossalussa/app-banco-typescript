@@ -9,7 +9,7 @@ export abstract class Conta {
         this._cliente = cliente;
     }
 
-    abstract depositar(valor: number): void;
+    abstract depositar(valor: number, data?: Date): void;
 
-    abstract sacar(valor: number): void;
+    abstract sacar(valor: number, data?: Date): void;
 }
