@@ -1,4 +1,4 @@
 export enum Taxas {
     SELIC = 13.75,
-    TR = 0.0025
+    TAXA_REFERENCIAL = 0.0025
 }

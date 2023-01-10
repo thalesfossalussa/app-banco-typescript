@@ -32,9 +32,9 @@ export class ContaPoupanca extends Conta {
         let rendimento = 0;
 
         if (Taxas.SELIC <= 8.5) {
-            rendimento = (Taxas.SELIC * 0.7) + Taxas.TR + this._rentabilidadeMensal;
+            rendimento = (Taxas.SELIC * 0.7) + Taxas.TAXA_REFERENCIAL + this._rentabilidadeMensal;
         } else if (Taxas.SELIC > 8.5) {
-            rendimento = 0.005 + Taxas.TR + this._rentabilidadeMensal;
+            rendimento = 0.005 + Taxas.TAXA_REFERENCIAL + this._rentabilidadeMensal;
         }
         return this.calcularSaldo() * rendimento;
     }
