@@ -1,6 +1,6 @@
 import { Conta } from "./conta.js";
 import { Credito } from "./credito.js";
-import { Transacao } from "../interface/itransacao.js";
+import { Transacao } from "./transacao";
 import { Debito } from "./debito.js";
 import { Taxas } from "../enums/taxas.js";
 import { Cliente } from "./cliente.js";

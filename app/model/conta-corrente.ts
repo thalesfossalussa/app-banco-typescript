@@ -1,4 +1,4 @@
-import { Transacao } from "../interface/itransacao.js";
+import { Transacao } from "./transacao.js";
 import { Cliente } from "./cliente.js";
 import { Conta } from "./conta.js";
 import { Credito } from "./credito.js";
@@ -41,21 +41,21 @@ export class ContaCorrente extends Conta {
     }
 
     public calcularSaldo(): number {
-        let totalCreditos = 0;
-        let totalDebitos = 0;
+        let saldo = 0;
 
         for (let i = 0; i < this._transacoes.length; i++) {
-            // Calculando Creditos
-            if (this._transacoes[i].constructor === Credito) {
-                totalCreditos += this._transacoes[i].valor;
-            }
+            saldo += this._transacoes[i].valor;
+            // // Calculando Creditos
+            // if (this._transacoes[i].constructor === Credito) {
+            //     totalCreditos += this._transacoes[i].valor;
+            // }
             
-            // Calculando Debitos
-            if (this._transacoes[i].constructor === Debito) {
-                totalDebitos += this._transacoes[i].valor;
-            }
+            // // Calculando Debitos
+            // if (this._transacoes[i].constructor === Debito) {
+            //     totalDebitos += this._transacoes[i].valor;
+            // }
         }
 
-        return (totalCreditos - totalDebitos) + this._limite;
+        return saldo + this._limite;
     }
 }

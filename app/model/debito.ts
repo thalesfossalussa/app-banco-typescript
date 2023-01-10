@@ -1,15 +1,11 @@
-import { Transacao } from "../interface/itransacao.js";
+import { Transacao } from "./transacao.js";
 
-export class Debito implements Transacao {
-    valor: number;
-    data: Date;
+export class Debito extends Transacao {
 
     constructor(valor: number, data?: Date) {
-        this.valor = valor;
-        if (data) {
-            this.data = data;
-        } else {
-            this.data = new Date;
+        if(valor > 0) {
+            valor = valor * -1;
         }
+        super(valor, data);
     }
 }
