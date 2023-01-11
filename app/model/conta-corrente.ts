@@ -38,15 +38,6 @@ export class ContaCorrente extends Conta {
 
         for (let i = 0; i < this._transacoes.length; i++) {
             saldo += this._transacoes[i].valor;
-            // // Calculando Creditos
-            // if (this._transacoes[i].constructor === Credito) {
-            //     totalCreditos += this._transacoes[i].valor;
-            // }
-            
-            // // Calculando Debitos
-            // if (this._transacoes[i].constructor === Debito) {
-            //     totalDebitos += this._transacoes[i].valor;
-            // }
         }
 
         return saldo + this._limite;
