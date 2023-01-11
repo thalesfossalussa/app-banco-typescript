@@ -15,4 +15,8 @@ export abstract class Transacao {
     public get valor(): number {
         return this._valor;
     }
+    
+    public get data(): Date {
+        return this._data;
+    }
 }
