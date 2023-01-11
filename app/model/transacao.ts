@@ -1,6 +1,7 @@
 export abstract class Transacao {
-    private _valor: number;
-    private _data: Date;
+    private readonly _valor: number;
+    private readonly _data: Date;
+    
 
     constructor(valor: number, data?: Date){
         this._valor = valor;
