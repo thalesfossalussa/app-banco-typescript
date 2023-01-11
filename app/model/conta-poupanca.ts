@@ -23,8 +23,6 @@ export class ContaPoupanca extends Conta {
         const debito = new Debito(valor, data);
         if(this.calcularSaldo() >= debito.valor){
             this._transacoes.push(debito);
-        } else{
-            console.log("Saldo inferior ao saque, favor verificar seu saldo e tentar novamente");
         }
     }
 

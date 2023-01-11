@@ -20,24 +20,17 @@ export class ContaCorrente extends Conta {
     public sacar(valor:number, data?: Date): void {
         const debito = new Debito(valor, data);
 
-        if(this.calcularSaldo() < debito.valor){
-            console.log("Limite insuficiente, favor verificar seu saldo e limite e tentar novamente");
-            return;
+        if(this.calcularSaldo() >= debito.valor){
+            this._transacoes.push(debito);
         }
 
-        this._transacoes.push(debito);
     }
 
     public transferir(contaDestino: Conta, valor: number): void {
-
-        if(this.calcularSaldo() < valor){
-            console.log("Limite insuficiente, favor verificar seu saldo e limite e tentar novamente");
-            return;
+        if(this.calcularSaldo() >= valor){
+            this.sacar(valor);
+            contaDestino.depositar(valor);
         }
-
-        this.sacar(valor);
-        contaDestino.depositar(valor);
-
     }
 
     public calcularSaldo(): number {
